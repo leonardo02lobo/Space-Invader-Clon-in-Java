@@ -13,11 +13,11 @@ public class Cangrejo extends Alienigenas {
  * que establece su posicion y recorrido
  */
     private Image imagenCangrejoBlanco[] = {
-        new ImageIcon(Cangrejo.class.getResource("/source/enemigos/Cangrejo 1.png")).getImage(),
-        new ImageIcon(Cangrejo.class.getResource("/source/enemigos/Cangrejo 2.png")).getImage(),};
+        new ImageIcon(Cangrejo.class.getResource("./../../public/Assets/enemigos/Cangrejo 1.png")).getImage(),
+        new ImageIcon(Cangrejo.class.getResource("./../../public/Assets/enemigos/Cangrejo 2.png")).getImage(),};
     private Image imagenCangrejoColor[] = {
-        new ImageIcon(Cangrejo.class.getResource("/source/Sprites Color/enemy2_1.png")).getImage(),
-        new ImageIcon(Cangrejo.class.getResource("/source/Sprites Color/enemy2_1.png")).getImage(),};
+        new ImageIcon(Cangrejo.class.getResource("./../../public/Assets/Sprites Color/enemy2_1.png")).getImage(),
+        new ImageIcon(Cangrejo.class.getResource("./../../public/Assets/Sprites Color/enemy2_1.png")).getImage(),};
     private int i = 0;
     private Image imagen[] = null;
 

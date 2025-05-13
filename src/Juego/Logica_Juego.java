@@ -2,23 +2,22 @@ package Juego;
 
 import Juego.enemigos.*;
 import Juego.personaje.*;
+import View.GameOver;
+import View.Pause;
+
 import java.awt.event.*;
 import java.io.*;
 import javax.swing.*;
 import logica.*;
 
 public class Logica_Juego implements Serializable {
-
-    //variables necesarias para el funcionamiento de la app
+    
     protected JPanel principal = new JPanel();
     protected JPanel panel = new JPanel();
-    protected Vista_Inferior vista_inferior = new Vista_Inferior();
-    protected Vista_Superior vista_superior = new Vista_Superior();
     protected Pause pause = new Pause();
     protected GameOver game_over = new GameOver();
     protected byte tipoJuego;
     protected Guardar_Datos_Partida guardar_datos = new Guardar_Datos_Partida();
-    protected Win ganador;
     protected boolean finalJuego2 = false;
     private boolean primerNivel = true;
 
@@ -59,7 +58,7 @@ public class Logica_Juego implements Serializable {
     /**
      * Este metodo se encarga de llamar e craer toda la logica del juego
      */
-    public void Logica_Juego() {
+    public void Logica() {
 
         /**
          * Con este metodo se crean los escudos del juego.
@@ -132,13 +131,13 @@ public class Logica_Juego implements Serializable {
                 FinalJuego();
 
                 try {
-                    if (vista_superior.band) {
-                        hiloMovimiento.stop();
-                        detenerAnimacionEnemigos();
-                        hiloNave.stop();
-                        panel.add(pause);
-                        vista_superior.band = false;
-                    }
+                    // if (vista_superior.band) {
+                    //     hiloMovimiento.stop();
+                    //     detenerAnimacionEnemigos();
+                    //     hiloNave.stop();
+                    //     panel.add(pause);
+                    //     vista_superior.band = false;
+                    // }
                     if (pause.bandera) {
                         hiloMovimiento.start();
                         hiloNave.start();
@@ -149,7 +148,7 @@ public class Logica_Juego implements Serializable {
                     }
                 } catch (Exception ex) {
                 }
-                if (pause.guardar_partida) {
+                if (pause.guardarPartida) {
                     guardar_datos.GuardarDatos(null);
                     hilo.stop();
                 }
@@ -272,7 +271,7 @@ public class Logica_Juego implements Serializable {
                                         if (disparo.getRectangle().intersects(naveNodriza.getRectangle())) {
                                             panel.remove(disparo);
                                             panel.remove(naveNodriza);
-                                            vista_superior.SumarPuntos(naveNodriza.getPuntos());
+                                            //vista_superior.SumarPuntos(naveNodriza.getPuntos());
                                             disparo = null;
                                             t = null;
                                             t.stop();
@@ -291,13 +290,13 @@ public class Logica_Juego implements Serializable {
                  * el puntaje del personaje.
                  */
                 private void sumaPuntos(int i, int j) {
-                    if (enemigos[i][j] instanceof Calamar) {
-                        vista_superior.SumarPuntos(30);
-                    } else if (enemigos[i][j] instanceof Cangrejo) {
-                        vista_superior.SumarPuntos(20);
-                    } else if (enemigos[i][j] instanceof Pulpo) {
-                        vista_superior.SumarPuntos(10);
-                    }
+                    // if (enemigos[i][j] instanceof Calamar) {
+                    //     vista_superior.SumarPuntos(30);
+                    // } else if (enemigos[i][j] instanceof Cangrejo) {
+                    //     vista_superior.SumarPuntos(20);
+                    // } else if (enemigos[i][j] instanceof Pulpo) {
+                    //     vista_superior.SumarPuntos(10);
+                    // }
                 }
             });
             t.start();
@@ -354,7 +353,7 @@ public class Logica_Juego implements Serializable {
                     dis.setLocation(dis.getX(), dis.movimientoDisparo());
                     if (dis.getRectangle().intersects(minave.getRectangle()) && !colision) {
                         panel.remove(dis);
-                        vista_inferior.QuitarVida();
+                        //vista_inferior.QuitarVida();
                         panel.remove(minave);
                         minave = null;
                         dis = null;
@@ -452,10 +451,10 @@ public class Logica_Juego implements Serializable {
     }
 
     public void FinalJuego() {
-        if (vista_inferior.VidasTotales < 1) {
-            finalJuego2 = true;
-            Game_Over();
-        }
+        // if (vista_inferior.VidasTotales < 1) {
+        //     finalJuego2 = true;
+        //     Game_Over();
+        // }
     }
 
     public void Game_Over() {
@@ -470,8 +469,6 @@ public class Logica_Juego implements Serializable {
     }
 
     public void Win() {
-        ganador = new Win(true, tipoJuego);
-        panel.add(ganador);
         hiloMovimiento.stop();
         detenerAnimacionEnemigos();
         hiloNave.stop();

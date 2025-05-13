@@ -32,6 +32,87 @@ public class Escudos_Personaje extends JLabel {
         setBounds(x, y, 70, 65);
     }
 
+    
+    public int getX() {
+        return x;
+    }
+
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+
+    public int getY() {
+        return y;
+    }
+
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+
+    public int getAncho() {
+        return ancho;
+    }
+
+
+    public void setAncho(int ancho) {
+        this.ancho = ancho;
+    }
+
+
+    public int getAlto() {
+        return alto;
+    }
+
+
+    public void setAlto(int alto) {
+        this.alto = alto;
+    }
+
+
+    public Escudos getEsc() {
+        return esc;
+    }
+
+
+    public void setEsc(Escudos esc) {
+        this.esc = esc;
+    }
+
+
+    public JLabel[][] getMatriz() {
+        return matriz;
+    }
+
+
+    public void setMatriz(JLabel[][] matriz) {
+        this.matriz = matriz;
+    }
+
+
+    public boolean isBand() {
+        return band;
+    }
+
+
+    public void setBand(boolean band) {
+        this.band = band;
+    }
+
+
+    public int getTotal() {
+        return total;
+    }
+
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+
     /**
      * Este metodo nos genera el escudo para el personaje
      */

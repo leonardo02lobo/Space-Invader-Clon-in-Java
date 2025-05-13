@@ -1,35 +1,25 @@
-package GUI;
+package View;
 
-import Implementacion.*;
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import logica.*;
 
-/**
- * Esta clase nos proporciona el panel de los creditos del juego, los creditos
- * nos dan una pequeña sinoxis del juego y al final se agregan tanto los autores
- * originales como los creadores del proyecto
- *
- * @author equipo
- */
+import controller.*;
+
 public class Creditos extends JPanel {
 
     public Creditos() {
+        CreditosController creditosController = new CreditosController();
 
         setLayout(null);
         setBackground(Color.BLACK);
 
-        /**
-         * Se crean los componentes swing que representa la vista del panel
-         */
         JLabel Creditos = new JLabel("Creditos");
         Creditos.setFont(new Font("OCR A Extended", 1, 40));
         Creditos.setBounds(170, 5, 400, 50);
         Creditos.setForeground(Color.YELLOW);
         add(Creditos);
 
-        JTextArea textArea = new JTextArea(); // 10 filas, 20 columnas
+        JTextArea textArea = new JTextArea();
         textArea.setText("Creador: Tomohiro Nishikado.\n"
                 + "Desarrollador: Taito Corporation y se lanzo en 1978. \nGénero: Shooter, Arcade.\n"
                 + "\n"
@@ -60,48 +50,12 @@ public class Creditos extends JPanel {
         boton.setFocusable(false);
         boton.setForeground(Color.WHITE);
 
-        /**
-         * El metodo ActionListener el cual genera el cambio de panel y el
-         * sonido
-         */
-        boton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    new musica("src/source/music/clic.wav").reproducirClic();
-                } catch (Exception ex) {
-                }
-                volverMenu();
-            }
-        });
-        /**
-         * Este ActionListener nos genera otra manera de salir del panel con la
-         * tecla de space manteiendo el fous del panel principal
-         */
+        boton.addActionListener(creditosController);
+
         App.panel.setFocusable(true);
-        App.panel.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                try {
-                    new musica("src/source/music/clic.wav").reproducirClic();
-                } catch (Exception ex) {
-                }
-                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                    volverMenu();
-                }
-            }
-        });
+        App.panel.addKeyListener(creditosController);
         add(boton);
     }
 
-    /**
-     * Este metodo privado nos genera un cambio en el panel
-     */
-    private void volverMenu() {
-        App.panel.removeAll();
-        App.panel.add(App.menu, BorderLayout.CENTER);
-        App.panel.revalidate();
-        App.panel.repaint();
-        App.menu.requestFocus();
-    }
+    
 }

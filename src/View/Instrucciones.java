@@ -1,34 +1,24 @@
-package GUI;
+package View;
 
-import Implementacion.*;
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import logica.musica;
 
-/**
- * Esta clase nos genera las instrucciones del juego en el panel, esta clase
- * cotiene las reglas basicas del juego que luego seran mejor explicadas en el
- * word
- *
- * @author equipo
- */
+import controller.*;
+
 public class Instrucciones extends JPanel {
 
     public Instrucciones() {
+        InstruccionesController instruccionesController = new InstruccionesController();
         setLayout(null);
         setBackground(Color.BLACK);
 
-        /**
-         * Creacion de los componentes swing
-         */
         JLabel textoBienvenida = new JLabel("Instrucciones");
         textoBienvenida.setFont(new Font("OCR A Extended", 1, 40));
         textoBienvenida.setBounds(90, 5, 400, 50);
         textoBienvenida.setForeground(Color.YELLOW);
         add(textoBienvenida);
 
-        JTextArea textArea = new JTextArea(); // 10 filas, 20 columnas
+        JTextArea textArea = new JTextArea(); 
         textArea.setText("\nObjetivo: Destruye todas las oleadas de alienígenas"
                 + "antes de que\n lleguen a la parte inferior de la pantalla.\n"
                 + "\nControles: Mover izquierda a derecha con: " + "'A' " + "y 'D'" + "\n"
@@ -49,58 +39,18 @@ public class Instrucciones extends JPanel {
         textArea.setForeground(Color.WHITE);
         add(textArea);
 
-        /**
-         * Este boton nos genera una accion para regresarnos al panel anterior
-         * con el boton
-         */
         JButton boton = new JButton();
         CrearBoton(boton, 200, 420, 100, 30, "atras");
         boton.setFont(new Font("OCR A Extended", 1, 18));
 
-        boton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    new musica("src/source/music/clic.wav").reproducirClic();
-                } catch (Exception ex) {
-                }
-                volverMenu();
-            }
-        });
-        /**
-         * Este metodo nos devuelve al panel anterior con la tecla espace
-         */
+        boton.addActionListener(instruccionesController);
+
         App.panel.setFocusable(true);
-        App.panel.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                try {
-                    new musica("src/source/music/clic.wav").reproducirClic();
-                } catch (Exception ex) {
-                }
-                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                    volverMenu();
-                }
-            }
-        });
+        App.panel.addKeyListener(instruccionesController);
         add(boton);
 
     }
 
-    /**
-     * Este metodo privado nos genera un cambio en el panel
-     */
-    private void volverMenu() {
-        App.panel.removeAll();
-        App.panel.add(App.menu, BorderLayout.CENTER);
-        App.panel.revalidate();
-        App.panel.repaint();
-        App.menu.requestFocus();
-    }
-
-    /**
-     * Este metodo privado nos crea los botones del juego
-     */
     private void CrearBoton(JButton boton, int x, int y, int ancho, int alto, String texto) {
         boton.setText(texto);
         boton.setBackground(Color.BLACK);
