@@ -1,6 +1,5 @@
 package Models;
 
-import java.awt.Rectangle;
 
 public abstract class Entity {
     private int vida;

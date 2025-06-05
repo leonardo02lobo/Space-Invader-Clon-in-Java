@@ -4,18 +4,13 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-public class NaveController extends KeyAdapter implements ActionListener{
+public class NaveController extends KeyAdapter{
 
     public NaveController(JLabel labelNave,JPanel panelJuego) {
         this.labelNave = labelNave;
         this.panelJuego = panelJuego;
         x = this.labelNave.getX();
         y = this.labelNave.getY();
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
     }
 
     @Override

@@ -45,7 +45,7 @@ public class Logica_Juego implements Serializable {
 
     //variables extras para el funcionamiento del juego
     protected Timer t = null;
-    protected Disparo_Personaje disparo = null;
+    protected DisparoPersonaje disparo = null;
     protected boolean bandera = true;
     protected Timer hilo = null;
     protected Timer hiloMovimiento = null;
@@ -195,7 +195,7 @@ public class Logica_Juego implements Serializable {
             }
             //crea un disparo y lo posiciona y lo añade al panel
             int x = minave.getRectangle().x + (minave.getRectangle().width / 2);
-            disparo = new Disparo_Personaje(x, minave.getRectangle().y - 50);
+            disparo = new DisparoPersonaje(x, minave.getRectangle().y - 50);
             panel.add(disparo);
             /**
              * pregunta si el timer existente esta activo todavia
