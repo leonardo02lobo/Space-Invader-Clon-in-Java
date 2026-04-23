@@ -18,12 +18,6 @@ el juego contiene un menu el cual contiene de varias opciones, entre esas estan 
 
 [![Screenshot-2024-10-17-193720.png](https://i.postimg.cc/h4Nncp0J/Screenshot-2024-10-17-193720.png)](https://postimg.cc/XXKmgKm3)
 
-# Panel de creditos
-
-## Este panel muestra los creditos de juego, en los creditos hace referencia a los que participaron en el proyecto y los creadores originales del juego
-
-[![Screenshot-2024-10-17-193700.png](https://i.postimg.cc/gjXggywQ/Screenshot-2024-10-17-193700.png)](https://postimg.cc/xNQGCz33)
-
 # Panel de instrucciones
 
 ## Este panel muestra las instrucciones basicas del juego que se tienen que tomar en cuenta para jugar
